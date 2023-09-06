@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Flight Data for KML Generation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container pt-4">
+    <div class="col-lg-8 mx-auto">
+      <header class="d-flex align-items-center justify-content-center mb-4">
+        <img src="https://uploads-ssl.webflow.com/64a0b5a003c2c188baad841a/64f779f1017c61aed4ce0d00_Blue%20and%20White%20Minimal%20Smart%20Flying%20Modern%20Airline%20Logo-2.svg" alt="Company Logo" class="img-fluid me-4" style="height: 50px;">
+        <h1 class="mb-0">
+          Upload Flight Data for KML Generation
+        </h1>
+      </header>
+      <form action="/upload" enctype="multipart/form-data" method="post" class="bg-light p-4 rounded shadow-sm">
+        <h2>Data Source</h2>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="radio" id="FlightRadar24" name="dataSource" value="FlightRadar24" checked>
+          <label class="form-check-label" for="FlightRadar24">FlightRadar24</label>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="csvFile" class="form-label">Upload CSV File</label>
+            <input class="form-control" id="csvFile" accept=".csv" name="csvFile" type="file">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="kmlName" class="form-label">KML File Name</label>
+            <input class="form-control" id="kmlName" name="kmlName" type="text" placeholder="Name KML">
+          </div>
+        </div>
+        <h2>Export Settings</h2>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <h3>Line</h3>
+            <div class="mb-3">
+              <label for="lineColor" class="form-label">Color:</label>
+              <input class="form-control" id="lineColor" name="lineColor" type="color" value="#008000">
+            </div>
+            <div class="mb-3">
+              <label for="lineWidth" class="form-label">Width:</label>
+              <input class="form-control" id="lineWidth" max="999" min="1" name="lineWidth" type="number" step="0.1" value="1.5">
+            </div>
+            <div class="mb-3">
+              <label for="lineOpacity" class="form-label">Opacity:</label>
+              <input class="form-control" id="lineOpacity" max="100" min="0" name="lineOpacity" type="number" value="100">
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <h3>Area</h3>
+            <div class="mb-3">
+              <label for="areaColor" class="form-label">Color:</label>
+              <input class="form-control" id="areaColor" name="areaColor" type="color" value="#FF0000">
+            </div>
+            <div class="mb-3">
+              <label for="areaOpacity" class="form-label">Opacity:</label>
+              <input class="form-control" id="areaOpacity" max="100" min="0" name="areaOpacity" type="number" value="45">
+            </div>
+            <div class="mb-3">
+              <label for="areaStyle" class="form-label">Style:</label>
+              <select class="form-select" id="areaStyle" name="areaStyle">
+                <option value="Filled + Outline" selected>Filled + Outline</option>
+                <option value="Filled">Filled</option>
+                <option value="Outline">Outline</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <h2>Advanced Settings</h2>
+        <div class="mb-3">
+          <label for="altitudeMode" class="form-label">Altitude Mode:</label>
+          <select class="form-select" id="altitudeMode" name="altitudeMode">
+            <option value="relativeToGround">Relative to Ground</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="emailKML" class="form-label">Email KML to:</label>
+          <input class="form-control" id="emailKML" name="emailKML" type="email" placeholder="Email address">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="includeLogo" name="includeLogo" checked>
+          <label class="form-check-label" for="includeLogo">Include logo</label>
+          <input type="hidden" id="logoURL" name="logoURL" value="https://uploads-ssl.webflow.com/64a0b5a003c2c188baad841a/64f779f1017c61aed4ce0d00_Blue%20and%20White%20Minimal%20Smart%20Flying%20Modern%20Airline%20Logo-2.svg">
+        </div>
+        <div class="mb-3">
+          <label for="imageOverlay" class="form-label">Include Image Overlay:</label>
+          <input class="form-control" id="imageOverlay" accept="image/*" name="imageOverlay" type="file">
+        </div>
+        <div class="mb-3">
+          <input class="btn btn-primary" type="submit" value="Generate KML">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
